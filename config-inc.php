@@ -1,4 +1,5 @@
 <?php 
+require_once 'src/utils/dpr.php';
 ini_set('include_path', '/var/www/lib');
 
 define("DB_HOST", "localhost");
