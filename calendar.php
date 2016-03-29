@@ -2,24 +2,32 @@
 <head><link rel="stylesheet" href="./css/SimpleCalendar.css" /></head>
 <body>
 <?php
-echo strtotime("now"), "\n";
-echo strtotime("4 March 2016"), "\n";
-echo strtotime("2016-3-4"), "<br />";
-echo strtotime("+1 week"), "\n";
-echo strtotime("+1 week 2 days 4 hours 2 seconds"), "\n";
-echo strtotime("next Thursday"), "\n";
-echo strtotime("last Monday"), "\n";
 
+require_once 'config-inc.php';
+require_once('./src/utils/SimpleCalendar.php');
+require_once 'src/utils/dpr.php';
 
-error_reporting(E_ALL ^ E_WARNING);
-require_once('./lib/SimpleCalendar.php');
+#criteria
+include_once 'phpCriteria/Criteria.php';
+include_once 'src/cl.phpfarm.model/EntityCalendar_event.php';
+
+$criteria = new Criteria();
+$calendarEvent = new EntityCalendar_event();
+$criteria->createCriteria($calendarEvent);
+//$criteria->find($calendarEvent);
+$lista = $criteria->lista();
+//dpr($lista);
 
 $calendar = new donatj\SimpleCalendar();
+//$calendar = new donatj\SimpleCalendar('2016-03');
 
 $calendar->setStartOfWeek('Monday');
 
 $calendar->addDailyHtml( '<u><i>Sample</i></u> <b>Event</b>', 'today', 'tomorrow' );
-$calendar->addDailyHtml('Pruebita', '27 March 2016');
+foreach ($lista as $calendarEvent){
+	$calendar->addDailyHtml($calendarEvent->nombre, $calendarEvent->fecha);	
+}
+
 $calendar->addDailyHtml('Prueba23', '2016-03-27');
 $calendar->show(true);
 ?>
