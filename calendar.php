@@ -11,6 +11,8 @@ include_once 'phpCriteria/Criteria.php';
 include_once 'src/cl.phpfarm.model/EntityCalendar_event.php';
 include_once 'src/cl.phpfarm.svc/CalendarEventSvc.php';
 
+$logger->info("Carga de calendar");
+
 $calendarSvc = new CalendarEventSvc();
 $lista = $calendarSvc->getListEventByMes(3, 2016);
 

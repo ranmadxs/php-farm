@@ -4,8 +4,16 @@ include_once 'cl.phpfarm.model/EntityCalendar_event.php';
 include_once 'phpCriteria/Criteria.php';
 
 class CalendarEventSvc{
+
+	var $logger;
+	
+	function __construct() {
+		$this->logger = Logger::getRootLogger();
+	}
+	
 	
 	public function getListEventByMes($mes, $anio){
+		$this->logger->info("getListEventByMes params ::mes=".$mes.", anio:".$anio);
 		$criteria = new Criteria();
 		$criteria->setSQL("SELECT * FROM calendar_event WHERE year( `fecha` ) = 
 				 $anio AND Month(`fecha`) = $mes ");
@@ -14,6 +22,7 @@ class CalendarEventSvc{
 	}
 	
 	public function getListEventByDay($dia, $mes, $anio){
+		$this->logger->info("getListEventByMes params ::mes=".$mes.", anio:".$anio.", dia:".$dia);
 		$criteria = new Criteria();
 		$criteria->setSQL("SELECT * FROM calendar_event WHERE year( `fecha` ) = $anio 
 				AND Month(`fecha`) = $mes 
