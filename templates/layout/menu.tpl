@@ -1,2 +1,1 @@
-Php-farm Home
-<HR>
+<pyfarm-menu>Cargando...Menu</pyfarm-menu>

@@ -1,6 +1,6 @@
 <?php
 
-include_once 'cl.phpfarm.model/EntityCalendar_event.php';
+include_once 'src/cl.phpfarm.model/EntityCalendar_event.php';
 include_once 'phpCriteria/Criteria.php';
 
 class CalendarEventSvc{
@@ -31,6 +31,12 @@ class CalendarEventSvc{
 		return $criteria->getArrayList();
 	}
 	
+	public function create(EntityCalendar_event $calendarEvent) {
+		$criteria = new Criteria();
+		$criteria->persist($calendarEvent);
+		$calendarEvent->id = $criteria->getInsertID();
+		return $calendarEvent;
+	}
 	
 }
 ?>
