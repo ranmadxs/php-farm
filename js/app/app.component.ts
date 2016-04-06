@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES, RouteParams} from 'angular2/router';
 import {OneComponent}   from './one.component';
 import {TwoComponent}     from './two.component';
 @Component({
@@ -18,4 +18,5 @@ import {TwoComponent}     from './two.component';
   {path:'/one', name: 'OneComponent', component: OneComponent, useAsDefault: true},
   {path:'/two', name: 'TwoComponent', component: TwoComponent, data: {var1: 'valor1'}}
 ])
-export class AppComponent { }
+export class AppComponent { 
+}
