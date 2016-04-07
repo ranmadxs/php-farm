@@ -5,13 +5,13 @@ import 'rxjs/Rx';
 
 @Component({
    templateUrl: (function() {
-        return './templates/app/calendarWrapper.tpl';
+        return './templates/app/calendarComponent.tpl';
     }()),
    providers: [HTTP_PROVIDERS]
 })
     
 @Injectable()
-export class TwoComponent { 
+export class CalendarComponent { 
     
     private endpoint_url : string = 'http://localhost/php-farm/calendar.php';
     public calendarHtml : string = null;  
