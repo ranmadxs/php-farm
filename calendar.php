@@ -12,12 +12,17 @@ include_once 'src/cl.phpfarm.model/EntityCalendar_event.php';
 include_once 'src/cl.phpfarm.svc/CalendarEventSvc.php';
 
 $logger->info("Carga de calendar");
+$mes = ($_GET["mes"]> 0)?$_GET["mes"]:date("m");
+$anio = ($_GET["anio"] > 0)?$_GET["anio"]:date("Y");
+$fechaCalendario = $anio."-".$mes;
+echo "Fecha consulta : $fechaCalendario";
+
 
 $calendarSvc = new CalendarEventSvc();
-$lista = $calendarSvc->getListEventByMes(3, 2016);
+$lista = $calendarSvc->getListEventByMes($mes, $anio);
 
-$calendar = new donatj\SimpleCalendar();
-//$calendar = new donatj\SimpleCalendar('2016-03');
+//$calendar = new donatj\SimpleCalendar();
+$calendar = new donatj\SimpleCalendar($fechaCalendario);
 
 $calendar->setStartOfWeek('Monday');
 

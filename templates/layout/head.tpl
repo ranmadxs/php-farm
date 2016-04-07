@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="{$smarty.server.REQUEST_URI}css/styles.css">
 
-<script>document.write('<base href="' + document.location + '" />');</script>
+<base href="/php-farm/">
 <!-- jQuery -->
 <script type="text/javascript" src="{$smarty.server.REQUEST_URI}js/jquery-2.2.2.min.js"></script>
 <!-- Angular2 -->
@@ -14,8 +14,9 @@
 <script src="{$smarty.server.REQUEST_URI}js/angular2/system.js"></script>
 <script src="{$smarty.server.REQUEST_URI}js/angular2/typescript.js"></script>
 <script src="{$smarty.server.REQUEST_URI}js/angular2/Rx.js"></script>
-<script src="{$smarty.server.REQUEST_URI}js/angular2/angular2.dev.js"></script>
-<script src="{$smarty.server.REQUEST_URI}js/angular2/router.dev.js"></script>
+<script src="{$smarty.server.REQUEST_URI}js/angular2/angular2.js"></script>
+<script src="{$smarty.server.REQUEST_URI}js/angular2/router.js"></script>
+<script src="{$smarty.server.REQUEST_URI}js/angular2/http.js"></script>
 {literal}
 <script>
 	System.config({

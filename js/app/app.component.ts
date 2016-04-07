@@ -1,17 +1,12 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES, RouteParams} from 'angular2/router';
+import {Component, OnInit} from 'angular2/core';
+import {Router, RouteConfig, ROUTER_DIRECTIVES, RouteParams} from 'angular2/router';
 import {OneComponent}   from './one.component';
 import {TwoComponent}     from './two.component';
+import {Http, Headers, RequestOptions, URLSearchParams, Response, HTTP_DIRECTIVES} from 'angular2/http';
+
 @Component({
   selector: 'pyfarm-menu',    
-  template: `    
-    <h1>Component Router</h1>
-    <nav>
-      <a [routerLink]="['OneComponent']">One Component</a>
-      <a [routerLink]="['TwoComponent']">Two Component</a>
-    </nav>
-    <router-outlet></router-outlet>    
-  `,
+  templateUrl: './templates/app/mainComponent.tpl'
   directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
@@ -19,4 +14,9 @@ import {TwoComponent}     from './two.component';
   {path:'/two', name: 'TwoComponent', component: TwoComponent, data: {var1: 'valor1'}}
 ])
 export class AppComponent { 
+  constructor(private _router: Router) { }
+
+  onSelect() {
+    this._router.navigate( ['TwoComponent', { 'mes': '03' , 'anio' : '2016'}] );
+  }
 }
