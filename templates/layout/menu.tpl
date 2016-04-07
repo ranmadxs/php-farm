@@ -1,1 +1,1 @@
-<pyfarm-menu>Cargando...Menu</pyfarm-menu>
+<app-menu>Cargando...Index.tpl</app-menu>

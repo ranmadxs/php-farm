@@ -5,7 +5,7 @@ import {CalendarComponent}     from './calendar.component';
 import {Http, Headers, RequestOptions, URLSearchParams, Response, HTTP_DIRECTIVES} from 'angular2/http';
 
 @Component({
-  selector: 'pyfarm-menu',    
+  selector: 'app-content',    
   templateUrl: './templates/app/mainComponent.tpl'
   directives: [ROUTER_DIRECTIVES]
 })

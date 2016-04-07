@@ -5,7 +5,7 @@ include_once 'smarty/Smarty.class.php';
 
 $smarty = new Smarty();
 //dpr($_SERVER);
-$smarty->assign("file_content", "index.tpl");
+$smarty->assign("file_content", "content.tpl");
 $smarty->display('layout/main.tpl');
 
 

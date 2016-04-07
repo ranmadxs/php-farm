@@ -1,9 +1,9 @@
 import {Component} from 'angular2/core';
 @Component({
-  selector: 'pyfarm-body',    
+  selector: 'app-menu',    
   template: `   
     Revisemos ...
   `
 })
 
-export class IndexComponent { }
+export class MenuComponent { }
