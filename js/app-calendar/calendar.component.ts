@@ -1,11 +1,12 @@
 import {Component, Injectable} from 'angular2/core';
 import {RouteData, ROUTER_DIRECTIVES, RouteParams, routerInjectables} from 'angular2/router';
 import {Http, Headers, RequestOptions, URLSearchParams, Response, HTTP_PROVIDERS} from 'angular2/http';
+
 import 'rxjs/Rx';
 
 @Component({
    templateUrl: (function() {
-        return './templates/app/calendarComponent.tpl';
+        return './templates/app-calendar/calendarComponent.tpl';
     }()),
    providers: [HTTP_PROVIDERS]
 })
@@ -17,7 +18,7 @@ export class CalendarComponent {
     public calendarHtml : string = null;  
     private http : Http;  
     var1 : string = null;
-    private mes: string = null;
+    mes: string = null;
     private anio: string = null;
     
     constructor(data: RouteData, params: RouteParams, http: Http){

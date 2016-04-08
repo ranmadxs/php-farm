@@ -17,14 +17,3 @@
 <script src="{$smarty.server.REQUEST_URI}js/angular2/angular2.js"></script>
 <script src="{$smarty.server.REQUEST_URI}js/angular2/router.js"></script>
 <script src="{$smarty.server.REQUEST_URI}js/angular2/http.js"></script>
-{literal}
-<script>
-	System.config({
-    	transpiler: 'typescript', 
-        typescriptOptions: { emitDecoratorMetadata: true }, 
-        packages: {'js/app': {defaultExtension: 'ts'}} 
-	});
-    System.import('js/app/main')
-    	.then(null, console.error.bind(console));
-</script>
-{/literal}
