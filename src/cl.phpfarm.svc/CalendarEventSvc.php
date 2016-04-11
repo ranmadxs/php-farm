@@ -1,6 +1,6 @@
 <?php
 
-include_once 'src/cl.phpfarm.model/EntityCalendar_event.php';
+include_once dirname(__FILE__).'/../cl.phpfarm.model/EntityCalendar_event.php';
 include_once 'phpCriteria/Criteria.php';
 
 class CalendarEventSvc{

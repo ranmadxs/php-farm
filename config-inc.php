@@ -1,12 +1,17 @@
 <?php
-ini_set('include_path', '/var/www/lib'); 
+if (!session_id())
+	session_start();
+$user_agent     =   $_SERVER['HTTP_USER_AGENT'];
+if (strpos($user_agent, 'Linux') !== false) {
+	ini_set('include_path', '/var/www/lib'); 
+}else{
+	ini_set('include_path', 'C:\\AppServ\\www\\lib'); 
+}
 require_once 'dpr.php';
 include_once 'apache-log4php-2.3.0/src/main/php/Logger.php';
 Logger::configure('resources/appender_dailyfile.properties');
 $logger = Logger::getRootLogger();
 
-if (!session_id())
-	session_start();
 
 define("DB_HOST", "localhost");
 define("DB_USER", "root");

@@ -1,7 +1,7 @@
 <?php
 include_once 'PHPBind.php';
-include_once 'src/cl.phpfarm.svc/CalendarEventSvc.php';
-include_once 'src/cl.phpfarm.model/EntityCalendar_event.php';
+include_once dirname(__FILE__).'/../cl.phpfarm.svc/CalendarEventSvc.php';
+include_once dirname(__FILE__).'/../cl.phpfarm.model/EntityCalendar_event.php';
 
 /**
  @Path("/calendar")

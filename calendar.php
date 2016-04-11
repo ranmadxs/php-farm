@@ -1,9 +1,8 @@
+<?require_once 'config-inc.php';?>
 <html>
 <head><link rel="stylesheet" href="./css/SimpleCalendar.css" /></head>
 <body>
 <?php
-
-require_once 'config-inc.php';
 require_once('./src/utils/SimpleCalendar.php');
 
 #criteria
@@ -22,7 +21,7 @@ $calendarSvc = new CalendarEventSvc();
 $lista = $calendarSvc->getListEventByMes($mes, $anio);
 
 //$calendar = new donatj\SimpleCalendar();
-$calendar = new donatj\SimpleCalendar($fechaCalendario);
+$calendar = new SimpleCalendar($fechaCalendario);
 
 $calendar->setStartOfWeek('Monday');
 

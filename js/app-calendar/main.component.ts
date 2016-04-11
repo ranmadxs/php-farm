@@ -1,8 +1,8 @@
 import {Component, OnInit, Input} from 'angular2/core';
 import {Router, RouteConfig, ROUTER_DIRECTIVES, RouteParams} from 'angular2/router';
-import {OneComponent}   from './one.component';
-import {CalendarComponent}     from './calendar.component';
-import {MenuComponent}     from './menu.component';
+import {OneComponent}   from './one.component.ts';
+import {CalendarComponent}     from './calendar.component.ts';
+import {MenuComponent}     from './menu.component.ts';
 import {Http, Headers, RequestOptions, URLSearchParams, Response, HTTP_DIRECTIVES} from 'angular2/http';
 
 @Component({
