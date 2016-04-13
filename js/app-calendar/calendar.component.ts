@@ -41,5 +41,4 @@ export class CalendarComponent {
                 error => this.error = "calendar.php no responde"
         );          
     }
-    
 }

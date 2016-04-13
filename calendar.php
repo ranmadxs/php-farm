@@ -14,8 +14,7 @@ $logger->info("Carga de calendar");
 $mes = ($_GET["mes"]> 0)?$_GET["mes"]:date("m");
 $anio = ($_GET["anio"] > 0)?$_GET["anio"]:date("Y");
 $fechaCalendario = $anio."-".$mes;
-echo "Fecha consulta : $fechaCalendario";
-
+echo 'Fecha consulta:'. $fechaCalendario;
 
 $calendarSvc = new CalendarEventSvc();
 $lista = $calendarSvc->getListEventByMes($mes, $anio);

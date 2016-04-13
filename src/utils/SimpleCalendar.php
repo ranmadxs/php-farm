@@ -129,11 +129,11 @@ class SimpleCalendar {
 
 		$count = $wday + 1;
 		for( $i = 1; $i <= $no_days; $i++ ) {
-			$out .= '<td' . ($i == $this->now['mday'] && $this->now['mon'] == date('n') && $this->now['year'] == date('Y') ? ' class="today"' : '') . '>';
+			$out .= '<td ' . ($i == $this->now['mday'] && $this->now['mon'] == date('n') && $this->now['year'] == date('Y') ? ' class="today"' : '') . '>';
 
 			$datetime = mktime(0, 0, 1, $this->now['mon'], $i, $this->now['year']);
 
-			$out .= '<time datetime="' . date('Y-m-d', $datetime) . '">' . $i . '</time>';
+			$out .= '<time (click)="onClickDay()" datetime="' . date('Y-m-d', $datetime) . '">' . $i . '</time>';
 
 			$dHtml_arr = false;
 			if( isset($this->dailyHtml[$this->now['year']][$this->now['mon']][$i]) ) {
