@@ -6,6 +6,7 @@
 <base href="/php-farm/">
 <!-- jQuery -->
 <script type="text/javascript" src="{$smarty.server.REQUEST_URI}js/jquery-2.2.2.min.js"></script>
+<script type="text/javascript" src="./js/simpleCalendar.js"></script>
 <!-- Angular2 -->
 <script src="{$smarty.server.REQUEST_URI}js/angular2/es6-shim.min.js"></script>
 <script src="{$smarty.server.REQUEST_URI}js/angular2/system-polyfills.js"></script>

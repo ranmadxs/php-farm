@@ -20,6 +20,7 @@ table.SimpleCalendar {
       background: white;
       padding: 2px;
       text-align: right;
+      cursor: crosshair;
       font-weight: bold; }
     table.SimpleCalendar tbody td.SCsuffix, table.SimpleCalendar tbody td.SCprefix {
       background: white; }
@@ -30,6 +31,7 @@ table.SimpleCalendar {
       line-height: 1em;
       border-bottom: 1px solid #bbb;
       background: #858585;
+      cursor: pointer;
       color: white; }
   table.SimpleCalendar tbody td.today {
     background: #d2d2d2; }

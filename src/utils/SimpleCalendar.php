@@ -19,6 +19,7 @@ class SimpleCalendar {
 	 */
 	public $wday_names = false;
 
+	private $smarty = null;
 	private $now;
 	private $dailyHtml = array();
 	private $offset = 0;
@@ -45,7 +46,8 @@ class SimpleCalendar {
 			$this->now = getdate();
 		}
 	}
-
+	
+	
 	/**
 	 * Add a daily event to the calendar
 	 *
@@ -53,7 +55,7 @@ class SimpleCalendar {
 	 * @param string      $start_date_string Date string for when the event starts
 	 * @param null|string $end_date_string Date string for when the event ends. Defaults to start date
 	 */
-	public function addDailyHtml( $html, $start_date_string, $end_date_string = null ) {
+	public function addDailyHtml( $html, $start_date_string, $end_date_string = null , $id = null) {
 		static $htmlCount = 0;
 		$start_date = strtotime($start_date_string);
 		if( $end_date_string ) {
@@ -66,7 +68,8 @@ class SimpleCalendar {
 		do {
 			$tDate = getdate($working_date);
 			$working_date += 86400;
-			$this->dailyHtml[$tDate['year']][$tDate['mon']][$tDate['mday']][$htmlCount] = $html;
+			$htmlEvent = "<event idCalendarEvent='$id'>".$html."</event>";
+			$this->dailyHtml[$tDate['year']][$tDate['mon']][$tDate['mday']][$htmlCount] = $htmlEvent;
 		} while( $working_date < $end_date + 1 );
 
 		$htmlCount++;
@@ -90,13 +93,53 @@ class SimpleCalendar {
 		}
 	}
 
+	public function show( $echo = true , $smarty = null) {
+		if($smarty == null){
+			$this->showHtml($echo);
+		}else{
+			if( $this->wday_names ) {
+				$wdays = $this->wday_names;
+			} else {
+				$today = (86400 * (date("N")));
+				$wdays = array();
+				for( $i = 0; $i < 7; $i++ ) {
+					$wdays[] = strftime('%a', time() - $today + ($i * 86400));
+				}
+			}	
+			$this->arrayRotate($wdays, $this->offset);
+			$wday    = date('N', mktime(0, 0, 1, $this->now['mon'], 1, $this->now['year'])) - $this->offset;
+			$no_days = cal_days_in_month(CAL_GREGORIAN, $this->now['mon'], $this->now['year']);
+			$wday = ($wday + 7) % 7;
+			
+			if( $wday == 7 ) {
+				$wday = 0;
+			}
+			$count = $wday + 1;
+			for( $i = 1; $i <= $no_days; $i++ ) {
+				$dHtml_arr[$i-1] = false;
+				if( isset($this->dailyHtml[$this->now['year']][$this->now['mon']][$i]) ) {
+					$dHtml_arr[$i-1] = $this->dailyHtml[$this->now['year']][$this->now['mon']][$i];
+				}				
+			}
+			
+			$smarty->assign("month", $this->now['mon']);
+			$smarty->assign("year", $this->now['year']);
+			$smarty->assign("dHtml_arr", $dHtml_arr);
+			$smarty->assign("count", $count);
+			$smarty->assign("no_days", $no_days);
+			$smarty->assign("wday", $wday);	
+			$smarty->assign("wdays", $wdays);			
+			$smarty->display('simpleCalendar.tpl');
+		}
+	}
+	
 	/**
 	 * Returns/Outputs the Calendar
 	 *
 	 * @param bool $echo Whether to echo resulting calendar
 	 * @return string HTML of the Calendar
 	 */
-	public function show( $echo = true ) {
+	public function showHtml( $echo = true ) {
 		if( $this->wday_names ) {
 			$wdays = $this->wday_names;
 		} else {
@@ -133,7 +176,7 @@ class SimpleCalendar {
 
 			$datetime = mktime(0, 0, 1, $this->now['mon'], $i, $this->now['year']);
 
-			$out .= '<time (click)="onClickDay()" datetime="' . date('Y-m-d', $datetime) . '">' . $i . '</time>';
+			$out .= '<time datetime="' . date('Y-m-d', $datetime) . '">' . $i . '</time>';
 
 			$dHtml_arr = false;
 			if( isset($this->dailyHtml[$this->now['year']][$this->now['mon']][$i]) ) {

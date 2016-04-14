@@ -1,4 +1,3 @@
-
 <app-calendar-menu (emittMes)="setMesSelectedMain($event)">Cargando...Menu Calendar2.tpl</app-calendar-menu>
 <h1>Calendario {{anio}}-{{mes}}-{{dia}}</h1>
 <nav>
