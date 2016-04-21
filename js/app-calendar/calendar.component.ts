@@ -18,8 +18,8 @@ export class CalendarComponent {
     public calendarHtml : string = null;  
     private http : Http;  
     var1 : string = null;
-    mes: string = null;
-    private anio: string = null;
+    mes: numeric = null;
+    private anio: numeric = null;
     
     constructor(data: RouteData, params: RouteParams, http: Http){
         this.http = http;

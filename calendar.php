@@ -6,7 +6,6 @@ require_once('./src/utils/SimpleCalendar.php');
 
 $smarty = new Smarty();
 smartyTemplate($smarty, "./");
-
 #criteria
 include_once 'phpCriteria/Criteria.php';
 include_once 'src/cl.phpfarm.model/EntityCalendar_event.php';
@@ -26,12 +25,12 @@ $calendar = new SimpleCalendar($fechaCalendario);
 
 $calendar->setStartOfWeek('Monday');
 
-$calendar->addDailyHtml( '<u><i>Sample</i></u> <b>Event</b>', 'today', 'tomorrow' );
+//$calendar->addDailyHtml( '<u><i>Sample</i></u> <b>Event</b>', 'today', 'tomorrow' );
 foreach ($lista as $calendarEvent){
 	$calendar->addDailyHtml($calendarEvent["nombre"], $calendarEvent["fecha"], null, $calendarEvent["id"]);	
 }
 
-$calendar->addDailyHtml('Prueba23', '2016-03-27');
+//$calendar->addDailyHtml('Prueba23', '2016-03-27');
 $calendar->show(true, $smarty);
 //echo "<br/>";
 //$calendar->show(true);

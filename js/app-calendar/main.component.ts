@@ -16,14 +16,30 @@ import {Http, Headers, RequestOptions, URLSearchParams, Response, HTTP_DIRECTIVE
 ])
 export class MainComponent { 
   
-  public dia : string = "01";    
-  public mes : string = "01";  
-  public anio : string = "2016";  
-  constructor(private _router: Router) { }
+  public dia : numeric = null;    
+  public mes : numeric = null;  
+  public anio : numeric = null;  
 
-  setMesSelectedMain(mes : string){
+  constructor(private _router: Router) {
+        var date = new Date(); 
+        this.mes = date.getMonth()+1;
+        this.anio = date.getFullYear();  
+        this.dia = date.getDate();
+  }
+
+  setMes(mes : numeric){
       this.mes = mes;
   }
+
+  setAnio(anio : numeric){
+      this.anio = anio;
+  }
+
+  setDia(dia : numeric){
+      this.dia = dia;
+  }
+
+  
   onSelect() {
     this._router.navigate( ['CalendarComponent', { 'mes': '03' , 'anio' : '2016'}] );
   }

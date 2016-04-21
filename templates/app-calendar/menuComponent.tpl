@@ -1,8 +1,12 @@
 Revisemos ... 
-<select (change)="onChangeMes($event.target.value)">
-	<option value="01">Enero</option>
-	<option value="02">Febrero</option>
-	<option value="03">Marzo</option>
-	<option value="04">Abril</option>
-	<option value="05">Mayo</option>
-</select> {{mesSelected}}
+<select [ngModel]="anioSelected" (change)="updateSelectedAnio($event.target.value)">
+        <option *ngFor="#anio of arrayAnio" [value]=anio >{{anio}}</option>
+</select>
+
+<select [ngModel]="mesSelected" (change)="onChangeMes($event.target.value)">
+        <option *ngFor="#mes of arrayMes" [value]=mes.value >{{mes.name}}</option>
+</select>
+
+<select [ngModel]="diaSelected" (change)="updateSelectedDia($event.target.value)">
+        <option *ngFor="#dia of arrayDia" [value]=dia >{{dia}}</option>
+</select>

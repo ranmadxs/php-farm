@@ -1,9 +1,11 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="./css/SimpleCalendar.css" />
+		<link rel="stylesheet" href="./js/jquery.alerts-1.1/jquery.alerts.css" />
 		<!-- jQuery -->
 		<script type="text/javascript" src="./js/jquery-2.2.2.min.js"></script>
 		<script type="text/javascript" src="./js/simpleCalendar.js"></script>
+		<script type="text/javascript" src="./js/jquery.alerts-1.1/jquery.alerts.js"></script>
 	</head>
 	<body>
 		<table cellpadding="0" cellspacing="0" class="SimpleCalendar">
