@@ -13,6 +13,11 @@
     <ol>
         <li *ngFor="#calendarEvent of listEvent">
             <p><em>{{calendarEvent.nombre}}</em>{{calendarEvent.descripcion}}</p>
+            <div *ngIf="calendarEvent.img">
+                <a href="{{calendarEvent.img}}">
+                    <img src="{{calendarEvent.img}}" width="250" height="230" />
+                </a>
+            </div>
         </li>
     </ol>
 </div>

@@ -31,7 +31,10 @@ table.SimpleCalendar {
       line-height: 1em;
       border-bottom: 1px solid #bbb;
       background: #858585;
-      cursor: pointer;
       color: white; }
   table.SimpleCalendar tbody td.today {
     background: #d2d2d2; }
+
+  .cursorPuntero{
+      cursor: pointer;
+  }

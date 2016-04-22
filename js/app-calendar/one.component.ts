@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {RouteData, ROUTER_DIRECTIVES, RouteParams, routerInjectables} from 'angular2/router';
 import {Http, Headers, RequestOptions, URLSearchParams, Response, HTTP_PROVIDERS} from 'angular2/http';
+import { TemplateCompiler } from 'angular2/src/compiler/template_compiler';
 import 'rxjs/Rx';
 import {CalendarEvent}     from './calendar.struct';
 
@@ -20,7 +21,8 @@ export class OneComponent {
     public monthName : string = null;
 
 
-   constructor(http: Http, params: RouteParams){
+   constructor(http: Http, params: RouteParams, templateCompiler: TemplateCompiler){
+        templateCompiler.clearCache();
         var date = new Date(); 
         this.dia = params.get('dia');
         this.mes = params.get('mes');

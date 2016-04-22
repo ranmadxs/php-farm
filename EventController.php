@@ -22,7 +22,6 @@ if (isset($_GET['action'])) {
             break;
     }
 }
-
 if (isset($_POST['action'])) {
 
     switch ($_POST['action']) {
@@ -51,6 +50,17 @@ class EventController {
         $hourMin = date('H:i');
         $entity->tipo = "calendario";
         $entity->fecha  = $entity->fecha." ".$hourMin;
+        if ($_FILES["file"]["error"] == UPLOAD_ERR_OK) {
+            $type = $_FILES["file"]["type"];
+            $nombre_tmp = $_FILES["file"]["tmp_name"];
+            $data = file_get_contents($nombre_tmp);
+            $base64 = 'data:' . $type . ';base64,' . base64_encode($data);
+            //$myfile = fopen("./newfile.txt", "w") or die("Unable to open file!");            
+            //fwrite($myfile, $base64);
+            $entity->img = $base64;
+            $entity->tipo = "foto";
+        }
+        
         //dpr($entity);
         $this->calendarEventSvc->create($entity);       
         header('Content-type: application/json');

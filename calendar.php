@@ -27,7 +27,7 @@ $calendar->setStartOfWeek('Monday');
 
 //$calendar->addDailyHtml( '<u><i>Sample</i></u> <b>Event</b>', 'today', 'tomorrow' );
 foreach ($lista as $calendarEvent){
-	$calendar->addDailyHtml($calendarEvent["nombre"], $calendarEvent["fecha"], null, $calendarEvent["id"]);	
+	$calendar->addDailyHtml($calendarEvent["nombre"], $calendarEvent["fecha"], null, $calendarEvent["id"], $calendarEvent["tipo"]);	
 }
 
 //$calendar->addDailyHtml('Prueba23', '2016-03-27');

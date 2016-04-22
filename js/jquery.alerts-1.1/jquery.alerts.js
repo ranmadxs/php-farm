@@ -30,7 +30,7 @@
 		
 		// These properties can be read/written by accessing $.alerts.propertyName from your scripts at any time
 		
-		verticalOffset: -75,                // vertical offset of the dialog from center screen, in pixels
+		verticalOffset: -155,                // vertical offset of the dialog from center screen, in pixels
 		horizontalOffset: 0,                // horizontal offset of the dialog from center screen, in pixels/
 		repositionOnResize: true,           // re-centers the dialog on window resize
 		overlayOpacity: .01,                // transparency level of overlay
@@ -74,12 +74,14 @@
 			$.alerts._overlay('show');
 			
 			$("BODY").append(
+                          '<form method="post" action="" name="formAlert" id="formAlert" enctype="multipart/form-data">'+
 			  '<div id="popup_container">' +
 			    '<h1 id="popup_title"></h1>' +
 			    '<div id="popup_content">' +
 			      '<div id="popup_message"></div>' +
 				'</div>' +
-			  '</div>');
+			  '</div>'+
+                          '</form>');
 			
 			if( $.alerts.dialogClass ) $("#popup_container").addClass($.alerts.dialogClass);
 			
@@ -118,7 +120,7 @@
 					});
 				break;
 				case 'popup':
-					$("#popup_message").after('<div id="popup_panel"><input type="button" value="' + $.alerts.okButton + '" id="popup_ok" /><input type="button" value="' + $.alerts.cancelButton + '" id="popup_cancel" /></div>');
+					$("#popup_message").after('<div id="popup_panel"><input type="submit" value="' + $.alerts.okButton + '" id="popup_ok" /><input type="button" value="' + $.alerts.cancelButton + '" id="popup_cancel" /></div>');
 					$("#popup_cancel").click( function() {
 						$.alerts._hide();
 						if( callback ) callback(false);

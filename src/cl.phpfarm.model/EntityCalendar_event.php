@@ -23,7 +23,7 @@ class EntityCalendar_event {
 	public $descripcion;
 
 	/**
-	 * @Column(Field="tipo",Type="enum('calendario')",Key="",Null="YES",Default="",Extra="")
+	 * @Column(Field="tipo",Type="enum('calendario', 'foto')",Key="",Null="YES",Default="",Extra="")
 	*/
 	public $tipo;
 
@@ -32,6 +32,12 @@ class EntityCalendar_event {
 	*/
 	public $fecha;
 
+	/**
+	 * @Column(Field="img",Type="text",Key="",Null="YES",Default="",Extra="")
+	*/
+	public $img;
+        
+        
 	function __construct() {}
 }
 ?>

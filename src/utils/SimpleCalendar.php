@@ -55,7 +55,7 @@ class SimpleCalendar {
 	 * @param string      $start_date_string Date string for when the event starts
 	 * @param null|string $end_date_string Date string for when the event ends. Defaults to start date
 	 */
-	public function addDailyHtml( $html, $start_date_string, $end_date_string = null , $id = null) {
+	public function addDailyHtml( $html, $start_date_string, $end_date_string = null , $id = null, $tipo = null) {
 		static $htmlCount = 0;
 		$start_date = strtotime($start_date_string);
 		if( $end_date_string ) {
@@ -63,12 +63,26 @@ class SimpleCalendar {
 		} else {
 			$end_date = $start_date;
 		}
-
+                $iconTipo = "";
 		$working_date = $start_date;
 		do {
 			$tDate = getdate($working_date);
 			$working_date += 86400;
-			$htmlEvent = "<event idCalendarEvent='$id'>".$html."</event>";
+                            switch ($tipo) {
+                                case "calendario":
+                                    $iconTipo = " <img title='Evento' class='eventTipo cursorPuntero' src='img/Event_Icon.png' width='15px' height='15px'> ";
+                                    break;
+                                case "foto":
+                                    $iconTipo = " <img title='Foto' class='photoTipo cursorPuntero' src='img/Photo-icon.png' width='15px' height='15px'> ";
+                                    break;
+                                default:
+                                    $iconTipo = "";
+                                    break;
+                            }
+			$htmlEvent = "<event idCalendarEvent='$id'>"
+                                . $iconTipo
+                                . " <img title='Eliminar' class='eliminarTipo cursorPuntero' src='img/Delete_Icon.png' width='15px' height='15px'> "
+                                .$html."</event>";
 			$this->dailyHtml[$tDate['year']][$tDate['mon']][$tDate['mday']][$htmlCount] = $htmlEvent;
 		} while( $working_date < $end_date + 1 );
 

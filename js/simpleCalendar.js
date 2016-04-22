@@ -2,7 +2,7 @@ jQuery(document).on("click", '.dayEvents', function(event) {
     var dateTime = $(this).attr("datetime");
     var htmlDialog = "";
     var request = jQuery.ajax({
-            method: "GET",
+            type: "GET",
             url : "EventController.php", 
             data: { action: "addEvent", fecha : dateTime },
             dataType: "html",
@@ -13,17 +13,47 @@ jQuery(document).on("click", '.dayEvents', function(event) {
     });
     $.alerts.popup(htmlDialog, "Agregar Evento");
 });
-jQuery(document).on("click", '#popup_ok', function(event) { 
 
-    var nombre = jQuery("#nombre").val();
-    var descripcion = jQuery("#descripcion").val();
+function imageIsLoaded(e) { 
+    $("#file").css("color","green");
+    $('#image_preview').css("display", "block");
+    $('#previewing').attr('src', e.target.result);
+    $('#previewing').attr('width', '250px');
+    $('#previewing').attr('height', '230px');
+};
+
+jQuery(document).on("change", '#file', function(event) {
+    $("#message").empty();         // To remove the previous error message
+    var file = this.files[0];
+    var imagefile = file.type;
+    var match= ["image/jpeg","image/png","image/jpg"];	
+    if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
+        $('#previewing').attr('src','noimage.png');
+	$("#message").html("<p id='error'>Please Select A valid Image File</p>"+"<h4>Note</h4>"+"<span id='error_message'>Only jpeg, jpg and png Images type allowed</span>");
+	return false;
+    }
+    else{
+        var reader = new FileReader();	
+        reader.onload = imageIsLoaded;
+        reader.readAsDataURL(this.files[0]);
+    }		
+
+});
+
+
+jQuery(document).on("submit", '#formAlert', function(event) { 
+    event.preventDefault();
     var fecha = jQuery("#fecha").val();
-    jQuery.ajax({
-            method: "POST",
+    var nombre = jQuery("#nombre").val();
+    jQuery.ajax({            
             url : "EventController.php", 
-            data: { action: "saveEvent", fecha : fecha, nombre : nombre, descripcion : descripcion},
+            type: "POST",
+            data:  new FormData(this),          
+            contentType: false,
+            cache: false,
+            processData:false,
             dataType: "text",
-            async : true,
+            async : false,
             success : function (data){
                 var dayArray = fecha.split("-");
                 var obj = jQuery.parseJSON(data);
@@ -31,8 +61,6 @@ jQuery(document).on("click", '#popup_ok', function(event) {
                 $.alerts._hide();
             }
     });
-
-    
 });
 
 	
