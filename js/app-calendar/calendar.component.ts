@@ -14,7 +14,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class CalendarComponent { 
     
-    private endpoint_url : string = 'http://localhost/php-farm/calendar.php';
+    private endpoint_url : string = '/php-farm/calendar.php';
     public calendarHtml : string = null;  
     private http : Http;  
     var1 : string = null;

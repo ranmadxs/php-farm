@@ -10,7 +10,7 @@ import {CalendarEvent}     from './calendar.struct';
   providers: [HTTP_PROVIDERS]
 })
 export class OneComponent { 
-    public endpoint_url : string = 'http://localhost/php-farm/rs-catalog.php';
+    public endpoint_url : string = '/php-farm/rs-catalog.php';
     public listEvent : Object;
     public calendarEvent : CalendarEvent;
     public dia : numeric = null;    
