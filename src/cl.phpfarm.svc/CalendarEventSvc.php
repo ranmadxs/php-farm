@@ -11,7 +11,15 @@ class CalendarEventSvc{
 		$this->logger = Logger::getRootLogger();
 	}
 	
-	
+	public function deleteCalendarEvent($id){
+            $this->logger->info("delete calendar event id=".$id);
+            $criteria = new Criteria();
+            $calendarEvent = new EntityCalendar_event();
+            $calendarEvent->id=$id;
+            $criteria->delete($calendarEvent);            
+        }
+        
+        
 	public function getListEventByMes($mes, $anio){
 		$this->logger->info("getListEventByMes params ::mes=".$mes.", anio:".$anio);
 		$criteria = new Criteria();

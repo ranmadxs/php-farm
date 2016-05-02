@@ -64,7 +64,20 @@ jQuery(document).on("submit", '#formAlert', function(event) {
 });
 
 	
-jQuery(document).on("click", '.event', function(event) { 
-	var idCalendarEvent = jQuery(this).children("event").attr("idCalendarEvent");
-	alert(idCalendarEvent);
+jQuery(document).on("click", '.eliminarTipo', function(event) { 
+        var evenObj = jQuery(this);
+	var idCalendarEvent = evenObj.parent("event").attr("idCalendarEvent");
+        jConfirm('Seguro que desea eliminar el evento ?', 'Eliminar Evento', function(r) {            
+            if(r){
+                var request = jQuery.ajax({
+                    type: "GET",
+                    url : "rs-catalog.php/calendar/delete/"+idCalendarEvent, 
+                    dataType: "json",
+                    async : false
+                });
+                request.done(function( json ) {
+                    evenObj.parent("event").parent("div").remove();
+                });
+            }
+        });
 });

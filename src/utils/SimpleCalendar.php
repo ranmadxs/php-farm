@@ -64,6 +64,7 @@ class SimpleCalendar {
 			$end_date = $start_date;
 		}
                 $iconTipo = "";
+                $iconEliminar = "";
 		$working_date = $start_date;
 		do {
 			$tDate = getdate($working_date);
@@ -71,9 +72,19 @@ class SimpleCalendar {
                             switch ($tipo) {
                                 case "calendario":
                                     $iconTipo = " <img title='Evento' class='eventTipo cursorPuntero' src='img/Event_Icon.png' width='15px' height='15px'> ";
+                                    $iconEliminar = " <img title='Eliminar' class='eliminarTipo cursorPuntero' src='img/Delete_Icon.png' width='15px' height='15px'> ";
                                     break;
                                 case "foto":
                                     $iconTipo = " <img title='Foto' class='photoTipo cursorPuntero' src='img/Photo-icon.png' width='15px' height='15px'> ";
+                                    $iconEliminar = " <img title='Eliminar' class='eliminarTipo cursorPuntero' src='img/Delete_Icon.png' width='15px' height='15px'> ";
+                                    break;
+                                case "temperatura":
+                                    $iconTipo = " <img title='Clima' class='tiempoTipo' src='img/Weather_Icon.png' width='15px' height='15px'> ";
+                                    $iconEliminar = " ";
+                                    break;
+                                case "luz":
+                                    $iconTipo = " <img title='Luz / Oscuridad' class='luzTipo' src='img/solutions-512.gif' width='15px' height='15px'> ";
+                                    $iconEliminar = " ";
                                     break;
                                 default:
                                     $iconTipo = "";
@@ -81,7 +92,7 @@ class SimpleCalendar {
                             }
 			$htmlEvent = "<event idCalendarEvent='$id'>"
                                 . $iconTipo
-                                . " <img title='Eliminar' class='eliminarTipo cursorPuntero' src='img/Delete_Icon.png' width='15px' height='15px'> "
+                                . $iconEliminar
                                 .$html."</event>";
 			$this->dailyHtml[$tDate['year']][$tDate['mon']][$tDate['mday']][$htmlCount] = $htmlEvent;
 		} while( $working_date < $end_date + 1 );

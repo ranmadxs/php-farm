@@ -201,7 +201,8 @@
 		},
 		
 		_reposition: function() {
-			var top = (($(window).height() / 2) - ($("#popup_container").outerHeight() / 2)) + $.alerts.verticalOffset;
+			//var top = (($(window).height() / 2) - ($("#popup_container").outerHeight() / 2)) + $.alerts.verticalOffset;
+			var top = 20;
 			var left = (($(window).width() / 2) - ($("#popup_container").outerWidth() / 2)) + $.alerts.horizontalOffset;
 			if( top < 0 ) top = 0;
 			if( left < 0 ) left = 0;
