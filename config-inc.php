@@ -2,8 +2,7 @@
 if (!session_id())
 	session_start();
 ini_set('memory_limit', '-1');
-$user_agent     =   $_SERVER['HTTP_USER_AGENT'];
-if (strpos($user_agent, 'Linux') !== false) {
+if (PHP_OS == "Linux") {
 	ini_set('include_path', '/var/www/lib'); 
 }else{
 	ini_set('include_path', 'C:\\AppServ\\www\\lib'); 
