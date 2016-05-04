@@ -47,7 +47,8 @@ class TemperaturaSvc {
                 FROM temperatura
                 WHERE year( `fecha` ) = $anio
                 AND Month( `fecha` ) = $mes
-                AND Day( `fecha` ) = $dia");
+                AND Day( `fecha` ) = $dia
+                group by Day( `fecha` ) HAVING minHumedad > 0  ");
 	$criteria->execute();
 	return $criteria->getArrayList();
     }    

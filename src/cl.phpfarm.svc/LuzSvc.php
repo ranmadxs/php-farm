@@ -44,7 +44,9 @@ class LuzSvc {
             WHERE year( `fecha` ) = $anio
             AND estado =0
             AND Month( `fecha` ) = $mes
-            AND Day( `fecha` ) = $dia");
+            AND Day( `fecha` ) = $dia
+            GROUP BY Day( fecha ) HAVING luz >0 ");
+        
 	$criteria->execute();
 	return $criteria->getArrayList();
     }    
