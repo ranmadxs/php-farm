@@ -11,8 +11,8 @@ import {Http, Headers, RequestOptions, URLSearchParams, Response, HTTP_DIRECTIVE
   directives: [ROUTER_DIRECTIVES, MenuComponent]
 })
 @RouteConfig([
-  {path:'/one', name: 'OneComponent', component: OneComponent, useAsDefault: true},
-  {path:'/calendar', name: 'CalendarComponent', component: CalendarComponent, data: {var1: 'valor1'}}
+  {path:'/main.php/one', name: 'OneComponent', component: OneComponent, useAsDefault: true},
+  {path:'/main.php/calendar', name: 'CalendarComponent', component: CalendarComponent, data: {var1: 'valor1'}}
 ])
 export class MainComponent { 
   
