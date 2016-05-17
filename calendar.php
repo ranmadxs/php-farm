@@ -28,7 +28,8 @@ $calendar->setStartOfWeek('Monday');
 
 $calendarSvc = new CalendarEventSvc();
 $lista = $calendarSvc->getListEventByMes($mes, $anio);
-
+//$litAux = $calendarSvc->listTiposEventos();
+//dpr($litAux);
 $temperaturaSvc = new TemperaturaSvc();
 $lstTemperatura = $temperaturaSvc->listMaxMinByMes($mes, $anio);
 foreach ($lstTemperatura as $temperatura){

@@ -37,6 +37,10 @@ class EntityCalendar_event {
 	*/
 	public $img;
         
+        /**
+	 * @Column(Field="evento",Type="enum( 'Plantar', 'Inicio_Germinar', 'Medir', 'Foto', 'Tricoma', 'Germinado', 'Secado', 'Curado', 'Cosecha')",Key="",Null="YES",Default="",Extra="")
+	*/
+	public $evento;
         
 	function __construct() {}
 }

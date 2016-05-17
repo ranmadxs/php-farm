@@ -1,10 +1,10 @@
 <?php
 require_once 'config-inc.php';
-include_once 'PHPBind.php';
 include_once("smarty-cfg.php");
 include_once 'smarty/Smarty.class.php';
 include_once 'src/cl.phpfarm.svc/CalendarEventSvc.php';
 include_once 'src/cl.phpfarm.model/EntityCalendar_event.php';
+include_once 'PHPBind.php';
 
 $smarty = new Smarty();
 smartyTemplate($smarty, "./");
@@ -69,6 +69,9 @@ class EventController {
 
     function addEvent($smarty = null) {
         $this->logger->info(__FILE__ . "::addEvent");
+        $calendarEvetSvc = new CalendarEventSvc();
+        $listEventos = $calendarEvetSvc->listTiposEventos();
+        $smarty->assign("listEventos", $listEventos);
         $smarty->assign("fecha", $_GET["fecha"]);
         $smarty->display('addEvent.tpl');
     }

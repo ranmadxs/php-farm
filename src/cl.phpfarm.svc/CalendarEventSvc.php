@@ -19,6 +19,24 @@ class CalendarEventSvc{
             $criteria->delete($calendarEvent);            
         }
         
+        public function listTiposEventos(){
+            $criteria = new Criteria();
+            $criteria->setSQL("SELECT COLUMN_TYPE
+                                FROM information_schema.COLUMNS
+                                WHERE TABLE_SCHEMA = 'py-farm'
+                                AND TABLE_NAME = 'calendar_event'
+                                AND COLUMN_NAME = 'evento'");
+            $criteria->execute();
+            $criteriaEventos = $criteria->getArrayList();
+            $criteriaEventos = $criteriaEventos[0]["COLUMN_TYPE"];
+            $criteriaEventos = str_replace("enum(", "", $criteriaEventos);
+            $criteriaEventos = str_replace(")", "", $criteriaEventos);
+            $criteriaEventos = str_replace("'", "", $criteriaEventos);
+            //dpr($criteriaEventos);
+            $eventos = split(",", $criteriaEventos);
+            //dpr($eventos);
+            return $eventos;
+        }
         
 	public function getListEventByMes($mes, $anio){
 		$this->logger->info("getListEventByMes params ::mes=".$mes.", anio:".$anio);
