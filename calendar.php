@@ -46,7 +46,7 @@ foreach ($lstLuz as $luz){
 }
 
 foreach ($lista as $calendarEvent){
-    $calendar->addDailyHtml($calendarEvent["nombre"], $calendarEvent["fecha"], null, $calendarEvent["id"], $calendarEvent["tipo"]);	
+    $calendar->addDailyHtml($calendarEvent["nombre"], $calendarEvent["fecha"], null, $calendarEvent["id"], $calendarEvent["tipo"], $calendarEvent["evento"]);	
 }
 
 //$calendar->addDailyHtml('Prueba23', '2016-03-27');

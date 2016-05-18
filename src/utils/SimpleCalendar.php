@@ -55,7 +55,10 @@ class SimpleCalendar {
 	 * @param string      $start_date_string Date string for when the event starts
 	 * @param null|string $end_date_string Date string for when the event ends. Defaults to start date
 	 */
-	public function addDailyHtml( $html, $start_date_string, $end_date_string = null , $id = null, $tipo = null) {
+	public function addDailyHtml( $html, $start_date_string, $end_date_string = null , $id = null, $tipo = null, $evento = null) {
+                if ($evento != null){
+                    $evento = $evento." : ";
+                }
 		static $htmlCount = 0;
 		$start_date = strtotime($start_date_string);
 		if( $end_date_string ) {
@@ -93,7 +96,7 @@ class SimpleCalendar {
 			$htmlEvent = "<event idCalendarEvent='$id'>"
                                 . $iconTipo
                                 . $iconEliminar
-                                .$html."</event>";
+                                ."<b><i>".$evento."</i></b>".$html."</event>";
 			$this->dailyHtml[$tDate['year']][$tDate['mon']][$tDate['mday']][$htmlCount] = $htmlEvent;
 		} while( $working_date < $end_date + 1 );
 
