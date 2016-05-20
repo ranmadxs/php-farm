@@ -1,15 +1,16 @@
 <title>PY-Farm</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 
-<link rel="stylesheet" href="./css/styles.css">
-<link rel="stylesheet" href="./js/jquery.alerts-1.1/jquery.alerts.css" />
+<link rel="stylesheet" href="/php-farm/css/styles.css">
+<link rel="stylesheet" href="/php-farm/css/spinner.css">
+<link rel="stylesheet" href="/php-farm/js/jquery.alerts-1.1/jquery.alerts.css" />
 
 <base href="/php-farm/">
 <!-- jQuery -->
-<script type="text/javascript" src="./js/jquery-2.2.2.min.js"></script>
-<script type="text/javascript" src="./js/jquery.alerts-1.1/jquery.alerts.js"></script>
+<script type="text/javascript" src="/php-farm/js/jquery-2.2.2.min.js"></script>
+<script type="text/javascript" src="/php-farm/js/jquery.alerts-1.1/jquery.alerts.js"></script>
 
-<script type="text/javascript" src="./js/simpleCalendar.js"></script>
+<script type="text/javascript" src="/php-farm/js/simpleCalendar.js"></script>
 
 <!-- Angular2 -->
 <script src="./js/angular2/es6-shim.min.js"></script>

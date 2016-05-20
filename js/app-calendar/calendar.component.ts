@@ -13,7 +13,7 @@ import 'rxjs/Rx';
     
 @Injectable()
 export class CalendarComponent { 
-    
+    public cargando : boolean = true;
     private endpoint_url : string = '/php-farm/calendar.php';
     public calendarHtml : string = null;  
     private http : Http;  
@@ -22,6 +22,7 @@ export class CalendarComponent {
     private anio: numeric = null;
     
     constructor(data: RouteData, params: RouteParams, http: Http){
+        this.cargando = true;
         this.http = http;
         console.log(data.get('var1'));
         console.log(params.get('mes'));
@@ -38,7 +39,8 @@ export class CalendarComponent {
             .map(res => res.text())
             .subscribe(
                 data => this.calendarHtml = data,
-                error => this.error = "calendar.php no responde"
+                error => this.error = "calendar.php no responde",
+                () => this.cargando = false;
         );          
     }
 }

@@ -12,6 +12,7 @@ import {CalendarEvent}     from './calendar.struct';
 export class OneComponent { 
     public endpoint_url : string = '/php-farm/rs-catalog.php';
     public listEvent : Object;
+    public cargando : boolean = true;
     public calendarEvent : CalendarEvent;
     public dia : numeric = null;    
     public mes : numeric = null;  
@@ -23,6 +24,7 @@ export class OneComponent {
 
    constructor(http: Http, params: RouteParams, templateCompiler: TemplateCompiler){
         templateCompiler.clearCache();
+        this.cargando = true;
         var date = new Date(); 
         this.dia = params.get('dia');
         this.mes = params.get('mes');
@@ -45,8 +47,9 @@ export class OneComponent {
             .map(res => res.json())
             .subscribe(
                     data => this.listEvent = data,
-                    error => this.error = "restSvc no responde"
-            );        
+                    error => this.error = "restSvc no responde",
+                    () => this.cargando = false;
+            );   
    }
     
 

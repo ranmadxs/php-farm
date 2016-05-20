@@ -8,7 +8,8 @@
     #listEvent ol li p em { display:block; font-weight: bold;}
 </style>
 
-<h2>Eventos: {{dia}} de {{monthName}} del {{anio}}</h2>
+<h2>Eventos: {{dia}} de {{monthName}} del {{anio}}</h2> 
+<div *ngIf="cargando" class="spinner"></div>
 <div id="listEvent">
     <ol>
         <li *ngFor="#calendarEvent of listEvent">
